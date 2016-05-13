@@ -6,7 +6,8 @@ import expressBunyanLogger from 'express-bunyan-logger';
 import path from 'path';
 import pkg from '../package.json';
 
-const log = debug('app');
+//const log = debug('app');
+const log = console.log
 const app = express();
 const port = process.env.PORT || 3000;
 const routesDir = path.join(__dirname, 'routes');
