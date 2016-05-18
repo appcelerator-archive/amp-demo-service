@@ -1,12 +1,11 @@
 import bodyParser from 'body-parser';
-import debug from 'debug';
 import { DirectoryRouteLoader } from 'atomiq';
 import express from 'express';
 import expressBunyanLogger from 'express-bunyan-logger';
 import path from 'path';
 import pkg from '../package.json';
+import log from './lib/log.js'
 
-const log = debug('app');
 const app = express();
 const port = process.env.PORT || 3000;
 const routesDir = path.join(__dirname, 'routes');
@@ -33,11 +32,13 @@ let loader = new DirectoryRouteLoader(app);
 loader.load(routesDir);
 app.use(loader.router);
 
+log.info({ msgid: 'environment', env: process.env });
+
 // start listening when this is the main node module
 if (require.main === module) {
   app.set('port', port);
   const server = app.listen(app.get('port'), () => {
-    log('%s v%s listening on port %s', pkg.name, pkg.version, server.address().port);
+    log.info('%s v%s listening on port %s', pkg.name, pkg.version, server.address().port);
     app.set('server', server);
 
     // close server gracefully...
@@ -48,9 +49,9 @@ if (require.main === module) {
 
     function exitOnSignal(signal) {
       process.on(signal, () => {
-        log(`$(signal) received, stopping server...`);
+        log.info(`$(signal) received, stopping server...`);
         server.close(() => {
-          log('server stopped');
+          log.info('server stopped');
           process.exit();
         });
       });
