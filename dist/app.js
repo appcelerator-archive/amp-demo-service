@@ -32,7 +32,8 @@ var _package2 = _interopRequireDefault(_package);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var log = (0, _debug2.default)('app');
+//const log = debug('app');
+var log = console.log;
 var app = (0, _express2.default)();
 var port = process.env.PORT || 3000;
 var routesDir = _path2.default.join(__dirname, 'routes');

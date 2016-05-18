@@ -31,6 +31,7 @@ var Ping = function (_Route) {
 
     // GET /ping
     value: function get(req, res) {
+      console.log('pong');
       req.log.info('pong');
       res.json(req.app.get('service'));
     }
