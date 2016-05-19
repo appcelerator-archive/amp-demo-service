@@ -1,21 +1,20 @@
 #!/bin/bash
 
-#display env. variables
-echo ---------------------------------------------------------------------------
-echo "Configured outputs:"
 echo "CONSUL: "$CONSUL
-echo "InfluxDB:     $OUTPUT_INFLUXDB_ENABLED"
-echo "Cloudwatch:   $OUTPUT_CLOUDWATCH_ENABLED"
-echo "Kafka:        $OUTPUT_KAFKA_ENABLED"
+echo "DEPENDENCIES: "$DEPENDENCIES
 if [ -z "$CONSUL" ]; then
-  exec /run.sh
+  exec node dist/app.js
 else
   #update containerpilot conffile
   sed -i "s/\[consul\]/$CONSUL/g" /etc/containerpilot.json
+  sed -i "s/\[loglevel\]/$CP_LOG_LEVEL/g" /etc/containerpilot.json
+  sed -i "s/\[poll\]/$CP_POLL/g" /etc/containerpilot.json
+  sed -i "s/\[ttl\]/$CP_TTL/g" /etc/containerpilot.json
   echo ---------------------------------------------------------------------------
   echo containerPilot conffile
   cat /etc/containerpilot.json
   echo ---------------------------------------------------------------------------
+
   while true
   do
     ready=0
@@ -39,6 +38,6 @@ else
     done
     sleep 3
     echo "All dependencies are ready"
-    /bin/containerpilot /run.sh
-done
+    /bin/containerpilot node dist/app.js
+  done
 fi
