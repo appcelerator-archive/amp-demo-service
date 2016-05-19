@@ -16,7 +16,6 @@ RUN curl -Lo /tmp/cb.tar.gz https://github.com/joyent/containerpilot/releases/do
 && mv ./containerpilot /bin/
 COPY containerpilot.json /etc/containerpilot.json
 COPY ./start.sh /etc/start.sh
-COPY ./stop.sh /etc/stop.sh
 
 ENV CONSUL=consul:8500
 ENV CP_LOG_LEVEL=ERROR
