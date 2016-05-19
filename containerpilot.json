@@ -1,0 +1,17 @@
+{
+  "consul": "[consul]",
+  "logging": {
+    "level": "[loglevel]",
+    "format": "text",
+    "output": "stdout"
+  },  
+  "services": [
+    {
+      "name": "amp-demo-service",
+      "port": 3000,
+      "health": "pidof node",
+      "poll": [poll],
+      "ttl": [ttl]
+    }
+  ]
+}
