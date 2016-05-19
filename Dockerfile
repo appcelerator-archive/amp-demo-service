@@ -18,7 +18,7 @@ COPY containerpilot.json /etc/containerpilot.json
 COPY ./start.sh /etc/start.sh
 COPY ./stop.sh /etc/stop.sh
 
-#ENV CONSUL=consul:8500
+ENV CONSUL=consul:8500
 ENV CP_LOG_LEVEL=ERROR
 ENV CP_POLL=5
 ENV CP_TTL=20
