@@ -22,6 +22,6 @@ ENV CP_LOG_LEVEL=ERROR
 ENV CP_POLL=5
 ENV CP_TTL=20
 ENV CONTAINERPILOT=file:///etc/containerpilot.json
-ENV DEPENDENCIES="amp-log-agent"
+#ENV DEPENDENCIES="amp-log-agent"
 
 CMD ["/etc/start.sh"]
