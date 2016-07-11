@@ -4,6 +4,8 @@ services:
     extends:
       file: docker-compose.common.yml
       service: web
+    build: .
+    image: appcelerator/amp-demo-service:test
     environment:
       DEBUG: app*
       NODE_ENV: development
