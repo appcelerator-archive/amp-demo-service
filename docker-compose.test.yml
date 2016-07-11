@@ -1,0 +1,10 @@
+version: '2'
+services:
+  sut:
+    extends:
+      file: docker-compose.common.yml
+      service: web
+    environment:
+      DEBUG: app*
+      NODE_ENV: development
+    command: npm test
