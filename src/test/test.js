@@ -12,6 +12,10 @@ import GitHubUser from '../lib/GitHubUser';
 // best to use full `function()` syntax for the mocha functions.
 
 describe('tests', function() {
+  
+  it('should have a test', function() {
+    assert(true);
+  })
 
   // This is an auto-generated sample test to demo testing async functions
   it('should fetch GitHub user details for "subfuzion"', async function () {
