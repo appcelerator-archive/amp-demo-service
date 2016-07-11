@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: .
-    image: amp-demo-service
+    image: appcelerator/amp-demo-service
     ports:
       - "3000"
     environment:
