@@ -9,7 +9,8 @@ The amp-demo-service microservice has been generated with a few basic sample rou
   * [Babel](https://babeljs.io) support
   * [ESLint](http://eslint.org/) / [esformatter](https://github.com/millermedeiros/esformatter) support
 
-## Details
+## Details.
+
 
 The [Atomiq CLI](https://github.com/atomiqio/atomiq-cli) provides the following commands for building, running, and testing this project with Docker.
 
